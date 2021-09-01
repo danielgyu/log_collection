@@ -11,7 +11,9 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.File;
 
 
 @RestController
@@ -20,11 +22,26 @@ public class LogController {
     @Autowired
     SimpMessagingTemplate template;
 
-    // TODO
     @PostMapping("/send")
     public void writeLog(@RequestBody LogMessage logMessage) throws IOException {
-	String path = "/home/ubuntu/practice/log";
-	BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+	String path = "/home/kungyu/Documents/log.log";
+	
+	File file = new File(path);
+	FileWriter fr = null;
+
+	try {
+	    fr = new FileWriter(file, true);
+	    fr.write(logMessage.getMessage());
+	    fr.write(System.getProperty( "line.separator" ));
+	} catch (IOException e) {
+	    e.printStackTrace();
+	} finally {
+	    try {
+		fr.close();
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
+	}
     }
 
     /* Using SockJS
