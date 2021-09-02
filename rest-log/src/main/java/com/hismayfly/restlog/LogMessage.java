@@ -1,4 +1,4 @@
-package co.desilo.springlog;
+package com.hismayfly.restlog;
 
 public class LogMessage {
 
@@ -12,3 +12,4 @@ public class LogMessage {
 	this.message = message;
     }
 }
+

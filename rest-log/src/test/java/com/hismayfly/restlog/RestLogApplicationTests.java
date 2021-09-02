@@ -1,10 +1,10 @@
-package co.desilo.springlog;
+package com.hismayfly.restlog;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringlogApplicationTests {
+class RestLogApplicationTests {
 
 	@Test
 	void contextLoads() {
