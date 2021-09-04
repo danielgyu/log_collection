@@ -11,12 +11,17 @@ import java.io.IOException;
 public class LogController {
 
     @Autowired
-    LogFile file;
+    // LogFile file;
+    private LogRepository repository;
 
     @PostMapping("/log")
     public void writeLog(@RequestBody LogMessage logMessage) throws IOException {
+	repository.save(logMessage);
+
+	/* save log in file
 	System.out.println("file: " + file);
 	file.write(logMessage.getMessage());
 	file.write(System.getProperty( "line.separator" ));
+	*/
     }
 }
